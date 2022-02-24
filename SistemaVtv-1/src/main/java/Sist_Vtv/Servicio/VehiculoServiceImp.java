@@ -42,7 +42,7 @@ public class VehiculoServiceImp implements VehiculoService{
     @Override
     @Transactional(readOnly = true)
     public Vehiculo encontrarVehiculo(Vehiculo vehiculo) {
-    return vehiculoDao.findById(vehiculo.getIdVehiculo()).orElse(null);
+    return vehiculoDao.findById(vehiculo.getDominio()).orElse(null);
     }
     
 }

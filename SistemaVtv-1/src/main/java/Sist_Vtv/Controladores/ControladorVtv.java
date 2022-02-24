@@ -53,7 +53,6 @@ public class ControladorVtv {
     }
     @PostMapping("/crearVtv")
     public String crearVtv(Model model, Vtv vtv){
-    	vtv.setNroVtv((int)(Math.random()*9999999));
     	List<TipoControl>controles= tipoControlDao.findAll();
     	
     	for (TipoControl r : controles) {

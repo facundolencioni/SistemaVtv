@@ -12,7 +12,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  *
  * @author facu_
  */
-public interface DuenioDao extends JpaRepository<Duenio, Long>{
+public interface DuenioDao extends JpaRepository<Duenio, String>{
    
 	public Duenio findByNombre(String nombre);
 }

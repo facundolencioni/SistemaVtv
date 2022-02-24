@@ -40,35 +40,40 @@
         </div>
         <div>
             <form th:action="@{/duenio/guardar}"  method="post" th:object="${duenio}">
-                <div class= "row">
+                <div>
                 	<label for="dniDuenio" class="col-sm-2 col-form-label">Dni Titular</label>
-                	<div class="col-sm-10">
-                    <input type="text" name="idInspector" th:field="*{dniDuenio}" class="form-control form-control-lg">
-                    </div>
+                    <input type="text" name="dniDuenio" th:field="*{dniDuenio}" class="form-control form-control-lg">
+        		<span class="form-text text-danger" th:if="${#fields.hasErrors('dniDuenio')}" th:errors="*{dniDuenio}"> Error Nombre</span>
+                    
                 </div>
-            <div class="row">
+            <div>
                 <label for="nombre" class="col-sm-2 col-form-label">Nombre y Apellido</label>
-                <div class="col-sm-10">
-                    <input type="text"  name="nombre"  th:field="*{nombre}" class="form-control form-control-lg" placeholder="nombre apellido">
-                </div>
+                
+                    <input type="text"  name="nombre"  th:field="*{nombre}" class="form-control form-control-lg" placeholder="nombre y apellido">
+                	 <span class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"> Error Nombre</span>
+              
+                
             </div>
-            <div class="row">
+           
+            <div>
                 <label for="telefono" class="col-sm-2 col-form-label">Telefono</label>
-                <div class="col-sm-10">
+                
                     <input type="text"  name="telefono"  th:field="*{telefono}"class="form-control form-control-lg">
-                </div>
+               		 <span class="form-text text-danger" th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}">Error Telefono</span>
+               
             </div>
-            <div class="row">
-                <label for="email" class="col-sm-2 col-form-label">Direccion</label>
-                <div class="col-sm-10">
+            
+            <div>
+                	<label for="email" class="col-sm-2 col-form-label">Direccion</label>
                     <input type="text" name="direccion"  th:field="*{direccion}"class="form-control form-control-lg" placeholder="direccion">
-                </div>
+               		<span class="form-text text-danger" th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}">Error Direccion</span>
             </div>
+            	
                 <br/>
                 <label th:text="TipoDueño"></label><br /> <select
 				class="form-select" th:field="${duenio.tipoDuenio}">
 				<option th:value="null">Seleccione Tipo de Duenio</option>
-				<option th:each="tipoDuenio :${tipoDuenio}"
+				<option th:each="tipoDuenio :${tipoDuenios}"
 					th:value="${tipoDuenio.idTipoDuenio}"
 					th:text="${tipoDuenio.nombreTipoDuenio}"></option></select> 
                 <button type="submit" name="Guardar" value="Guardar" class="btn btn-primary">Guardar</button>

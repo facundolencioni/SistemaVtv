@@ -16,8 +16,6 @@ public class Vtv implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idVtv;
-    
-	private int nroVtv;
 	private LocalDate fechaIni;
 	private LocalDate fechaVen;
         
@@ -44,17 +42,6 @@ public class Vtv implements Serializable{
 	public void setIdVtv(Long idVtv) {
 		this.idVtv = idVtv;
 	}
-
-
-	public int getNroVtv() {
-		return nroVtv;
-	}
-
-
-	public void setNroVtv(int nroVtv) {
-		this.nroVtv = nroVtv;
-	}
-
 
 	public LocalDate getFechaIni() {
 		return fechaIni;
@@ -123,11 +110,10 @@ public class Vtv implements Serializable{
 	}
 
 
-	public Vtv(Long idVtv, int nroVtv, LocalDate fechaIni, LocalDate fechaVen, Inspector inspector, Vehiculo vehiculo,
+	public Vtv(Long idVtv, LocalDate fechaIni, LocalDate fechaVen, Inspector inspector, Vehiculo vehiculo,
 			EstadoVtv estado_Vtv) {
 		super();
 		this.idVtv = idVtv;
-		this.nroVtv = nroVtv;
 		this.fechaIni = fechaIni;
 		this.fechaVen = fechaVen;
 		this.inspector = inspector;

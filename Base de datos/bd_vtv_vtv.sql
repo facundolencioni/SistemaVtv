@@ -26,17 +26,16 @@ CREATE TABLE `vtv` (
   `id_Vtv` int NOT NULL AUTO_INCREMENT,
   `fecha_Ini` date NOT NULL,
   `fecha_ven` date DEFAULT NULL,
-  `vehiculo_id_vehiculo` int DEFAULT NULL,
   `inspector_id_inspector` int DEFAULT NULL,
   `estado_vtv_id_estado_vtv` int DEFAULT NULL,
-  `nro_vtv` int NOT NULL,
+  `vehiculo_dominio` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_Vtv`),
-  KEY `idVehiculo_idx` (`vehiculo_id_vehiculo`),
   KEY `idInspector_idx` (`inspector_id_inspector`),
   KEY `idEstadoVtv_idx` (`estado_vtv_id_estado_vtv`),
+  KEY `id_vehiculo_idx` (`vehiculo_dominio`),
+  CONSTRAINT `id_vehiculo` FOREIGN KEY (`vehiculo_dominio`) REFERENCES `vehiculo` (`Dominio`),
   CONSTRAINT `idEstadoVtv` FOREIGN KEY (`estado_vtv_id_estado_vtv`) REFERENCES `estadovtv` (`id_Estado_Vtv`),
-  CONSTRAINT `idInspector` FOREIGN KEY (`inspector_id_inspector`) REFERENCES `inspector` (`id_inspector`),
-  CONSTRAINT `idVehiculo` FOREIGN KEY (`vehiculo_id_vehiculo`) REFERENCES `vehiculo` (`id_Vehiculo`)
+  CONSTRAINT `idInspector` FOREIGN KEY (`inspector_id_inspector`) REFERENCES `inspector` (`id_inspector`)
 ) ENGINE=InnoDB AUTO_INCREMENT=98 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -46,7 +45,6 @@ CREATE TABLE `vtv` (
 
 LOCK TABLES `vtv` WRITE;
 /*!40000 ALTER TABLE `vtv` DISABLE KEYS */;
-INSERT INTO `vtv` VALUES (86,'2021-12-29','2022-12-29',1,6,1,4189046),(87,'2021-12-29',NULL,2,8,2,1527968),(88,'2021-12-29','2022-12-29',3,9,1,5881415),(89,'2021-12-29',NULL,4,9,2,3957681),(90,'2021-12-29',NULL,10,6,3,4498086),(91,'2021-12-29',NULL,11,6,2,6438242),(92,'2021-12-29',NULL,12,6,3,3891300),(93,'2021-12-29','2022-12-29',13,6,1,3485923),(94,'2021-12-29','2022-12-29',14,8,1,8763321),(95,'2021-12-30','2022-12-30',10,6,1,4643954),(96,'2022-02-18',NULL,4,8,2,8129514),(97,'2022-02-18','2023-02-18',3,8,1,2880247);
 /*!40000 ALTER TABLE `vtv` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -59,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-02-24 10:22:53
+-- Dump completed on 2022-02-24 16:16:21

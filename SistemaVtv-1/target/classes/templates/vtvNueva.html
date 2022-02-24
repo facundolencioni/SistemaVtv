@@ -50,7 +50,7 @@
 			<label th:text="Vehiculo"></label><br /> <select class="form-select"
 				th:field="${vtv.vehiculo}">
 				<option th:each="vehiculo :${vehiculo}"
-					th:value="${vehiculo.idVehiculo}"
+					th:value="${vehiculo.dominio}"
 					th:text="${vehiculo.dominio}+' '+ ${vehiculo.marca}+'-'+ ${vehiculo.modelo} +' '+ ${vehiculo.duenio.nombre}"></option></select>
 			
 		

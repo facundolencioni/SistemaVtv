@@ -5,15 +5,17 @@
  */
 package Sist_Vtv.Controladores;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import Sist_Vtv.Domain.Duenio;
-import Sist_Vtv.Domain.Vehiculo;
 import Sist_Vtv.Servicio.DuenioService;
 import Sist_Vtv.dao.TipoDuenioDao;
 import lombok.extern.slf4j.Slf4j;
@@ -40,12 +42,20 @@ public class ControladorDuenio {
 	}
 	@GetMapping("/agregar")
     public String agregar(Model model, Duenio duenio){
-		model.addAttribute("tipoDuenio", tipoDuenioSimp.findAll());
+		model.addAttribute("tipoDuenios", tipoDuenioSimp.findAll());
         return "modificarDuenio";
     }
 	 @PostMapping("/guardar")
-    public String guardar(Duenio duenio, Vehiculo vehiculo){
-		 duenioSimp.guardar(duenio);
+    public String guardar(@Valid Duenio duenioForm, Errors error, Model model){
+		 model.addAttribute("tipoDuenios", tipoDuenioSimp.findAll());
+		 if(error.hasErrors()) {
+			 return "modificarDuenio";
+		 }
+		 if (duenioSimp.encontrarDuenio(duenioForm)== null) {
+			 duenioSimp.guardar(duenioForm);
+		 }else {
+			 return "redirect:/duenio/";
+		 }
         return "redirect:/duenio/";
     }
 	 @GetMapping("/info/{dniDuenio}")

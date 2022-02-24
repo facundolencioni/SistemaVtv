@@ -5,7 +5,8 @@ import java.util.List;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import lombok.Data;
 
@@ -15,14 +16,15 @@ import lombok.Data;
 public class Duenio implements Serializable {
 	private static final long serialVersionUID=1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long dniDuenio;
+	@Size(min = 7, max = 8,message = "el dni no tiene la cantidad de caracteres adecuada")
+	@Pattern(regexp = "[0-9]+", message = "el dni solo puede contener numeros")
+	private String dniDuenio;
 	@NotEmpty
 	public String nombre;
 	@NotEmpty
 	private String direccion;
-	@NotNull
-	private int telefono;
+	@NotEmpty
+	private String telefono;
 	
     @ManyToOne
 	private TipoDuenio tipoDuenio;
@@ -30,11 +32,11 @@ public class Duenio implements Serializable {
     @OneToMany(mappedBy = "duenio", cascade = CascadeType.ALL)
 	private List<Vehiculo> vehiculos;
 
-	public Long getDniDuenio() {
+	public String getDniDuenio() {
 		return dniDuenio;
 	}
 
-	public void setDniDuenio(Long idDuenio) {
+	public void setDniDuenio(String idDuenio) {
 		this.dniDuenio = idDuenio;
 	}
 
@@ -54,11 +56,11 @@ public class Duenio implements Serializable {
 		this.direccion = direccion;
 	}
 
-	public int getTelefono() {
+	public String getTelefono() {
 		return telefono;
 	}
 
-	public void setTelefono(int telefono) {
+	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
 
@@ -78,7 +80,7 @@ public class Duenio implements Serializable {
 		this.vehiculos = vehiculos;
 	}
 
-	public Duenio(Long DniDuenio, String nombreDuenio, String direccion, int telefono, TipoDuenio tipoDuenio,
+	public Duenio(String DniDuenio, String nombreDuenio, String direccion, @NotEmpty String telefono, TipoDuenio tipoDuenio,
 			List<Vehiculo> vehiculos) {
 		super();
 		this.dniDuenio = DniDuenio;
