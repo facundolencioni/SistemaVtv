@@ -40,8 +40,11 @@
         </div>
         <div>
             <form th:action="@{/duenio/guardar}"  method="post" th:object="${duenio}">
-                <div>
-                    <input type="hidden" name="idInspector" th:field="*{idDuenio}">
+                <div class= "row">
+                	<label for="dniDuenio" class="col-sm-2 col-form-label">Dni Titular</label>
+                	<div class="col-sm-10">
+                    <input type="text" name="idInspector" th:field="*{dniDuenio}" class="form-control form-control-lg">
+                    </div>
                 </div>
             <div class="row">
                 <label for="nombre" class="col-sm-2 col-form-label">Nombre y Apellido</label>
@@ -52,7 +55,7 @@
             <div class="row">
                 <label for="telefono" class="col-sm-2 col-form-label">Telefono</label>
                 <div class="col-sm-10">
-                    <input type="number"  name="telefono"  th:field="*{telefono}"class="form-control form-control-lg">
+                    <input type="text"  name="telefono"  th:field="*{telefono}"class="form-control form-control-lg">
                 </div>
             </div>
             <div class="row">

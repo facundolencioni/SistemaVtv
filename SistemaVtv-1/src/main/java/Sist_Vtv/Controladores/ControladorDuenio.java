@@ -48,7 +48,7 @@ public class ControladorDuenio {
 		 duenioSimp.guardar(duenio);
         return "redirect:/duenio/";
     }
-	 @GetMapping("/info/{idDuenio}")
+	 @GetMapping("/info/{dniDuenio}")
 		public String duenioInfo(Model model, Duenio duenio) {
 		 duenio= duenioSimp.encontrarDuenio(duenio);
 		 model.addAttribute("duenio", duenio);
