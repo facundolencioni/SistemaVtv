@@ -27,10 +27,10 @@ CREATE TABLE `vehiculo` (
   `Dominio` varchar(45) NOT NULL,
   `Marca` varchar(45) NOT NULL,
   `Modelo` varchar(45) NOT NULL,
-  `duenio_id_duenio` int DEFAULT NULL,
+  `id_duenio` int DEFAULT NULL,
   PRIMARY KEY (`id_Vehiculo`),
-  KEY `idDuenio_idx` (`duenio_id_duenio`),
-  CONSTRAINT `idDuenio` FOREIGN KEY (`duenio_id_duenio`) REFERENCES `duenio` (`id_duenio`)
+  KEY `dni_duenio_idx` (`id_duenio`),
+  CONSTRAINT `dni_duenio` FOREIGN KEY (`id_duenio`) REFERENCES `duenio` (`dni_duenio`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -40,7 +40,7 @@ CREATE TABLE `vehiculo` (
 
 LOCK TABLES `vehiculo` WRITE;
 /*!40000 ALTER TABLE `vehiculo` DISABLE KEYS */;
-INSERT INTO `vehiculo` VALUES (1,'asd159','Ford','Focus',1),(2,'aer258','Fiat','Palio',2),(3,'afg789','Chevrolet','Cruze',3),(4,'qwe489','Honda','Civit',2),(10,'qwe165','Chevrolet','Onix',8),(11,'ert147','Fiat','Cronos',9),(12,'thi456','Ford','Fiesta',3),(13,'poi456','Fiat','Argo',1),(14,'ñlk298','Chevrolet','Prisma',3),(15,'tyu368','Fiat','Uno',8);
+INSERT INTO `vehiculo` VALUES (1,'asd159','Ford','Focus',NULL),(2,'aer258','Fiat','Palio',NULL),(3,'afg789','Chevrolet','Cruze',NULL),(4,'qwe489','Honda','Civit',NULL),(10,'qwe165','Chevrolet','Onix',NULL),(11,'ert147','Fiat','Cronos',NULL),(12,'thi456','Ford','Fiesta',NULL),(13,'poi456','Fiat','Argo',NULL),(14,'ñlk298','Chevrolet','Prisma',NULL),(15,'tyu368','Fiat','Uno',NULL);
 /*!40000 ALTER TABLE `vehiculo` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-02-24  9:06:46
+-- Dump completed on 2022-02-24 10:22:53

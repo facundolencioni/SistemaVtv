@@ -23,15 +23,15 @@ DROP TABLE IF EXISTS `duenio`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `duenio` (
-  `id_duenio` int NOT NULL AUTO_INCREMENT,
+  `dni_duenio` int NOT NULL,
   `nombre` varchar(80) DEFAULT NULL,
   `direccion` varchar(80) DEFAULT NULL,
   `telefono` int DEFAULT NULL,
   `tipo_duenio_id_tipo_duenio` int DEFAULT NULL,
-  PRIMARY KEY (`id_duenio`),
+  PRIMARY KEY (`dni_duenio`),
   KEY `idTipoDuenio_idx` (`tipo_duenio_id_tipo_duenio`),
   CONSTRAINT `idTipoDuenio` FOREIGN KEY (`tipo_duenio_id_tipo_duenio`) REFERENCES `tipoduenio` (`id_tipo_duenio`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-02-24  9:06:47
+-- Dump completed on 2022-02-24 10:22:54
