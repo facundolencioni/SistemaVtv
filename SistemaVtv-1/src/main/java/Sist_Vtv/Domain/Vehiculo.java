@@ -23,7 +23,7 @@ import lombok.Data;
 public class Vehiculo implements Serializable{
 	private static final long serialVersionUID=1L;
 	@Id
-	@Pattern(regexp = "[A-Z]{3}+[0-9]{3}+[A-Z]{3} || [A-Z]{3}+[0-9]{3} ", message = "la patente no tiene el formato valido")
+	@Pattern(regexp = "[A-Z]{3}[\\d]{3}", message = "la patente no tiene el formato valido")
 	private String Dominio;
 	@NotEmpty
 	private String Marca;

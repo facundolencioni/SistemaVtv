@@ -63,17 +63,23 @@ public class ControladorDuenio {
 		 }
     }
 	 
-	 @PostMapping("/vehiculo")
-	 public String altaVehiculo(@Valid Vehiculo vehiculoForm,Errors error, Duenio duenioForm) {
+	 @GetMapping("/vehiculo/{dniDuenio}")
+	 public String altaVehiculo(Vehiculo vehiculoForm, Duenio duenioForm) {
+		return "altaVehiculo";
+	 }
+	 @PostMapping("/vehiculo/alta")
+	 public String alta(@Valid Vehiculo vehiculoForm,Errors error, Duenio duenioForm) {
 		 System.out.println(duenioForm);
 		 if(error.hasErrors()) {
 			 return "altaVehiculo";
 		 }
-		 
 		 if(vehiculoSimp.encontrarVehiculo(vehiculoForm)== null) {
-	
+			 var a= duenioSimp.encontrarDuenio(duenioForm);
+			 vehiculoForm.setDuenio(a);
+			 vehiculoSimp.guardar(vehiculoForm);
 		 }
 		 return "redirect:/duenio/";
+		 
 	 }
 	 @GetMapping("/info/{dniDuenio}")
 		public String duenioInfo(Model model, Duenio duenio) {
