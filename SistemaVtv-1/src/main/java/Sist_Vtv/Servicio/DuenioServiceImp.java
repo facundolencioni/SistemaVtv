@@ -41,11 +41,5 @@ public class DuenioServiceImp implements DuenioService{
     public Duenio encontrarDuenio(Duenio duenio) {
     return duenioDao.findById(duenio.getDniDuenio()).orElse(null);
     }
-
-	@Override
-	@Transactional(readOnly = true)
-	public Duenio encontrarDuenio(String name) {
-		return duenioDao.findByNombre(name);
-	}
-    
+ 
 }

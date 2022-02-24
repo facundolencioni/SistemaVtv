@@ -39,7 +39,7 @@ public class ControladorInicio {
     @GetMapping("/buscar")
     public String inicio(Model model, Duenio duenio) {
     	
-		model.addAttribute("duenio", duenioSimp.encontrarDuenio(duenio.nombre));
+		model.addAttribute("duenio", duenioSimp.encontrarDuenio(duenio));
     	
     	return "duenio";
     }

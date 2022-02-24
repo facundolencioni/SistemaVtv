@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import Sist_Vtv.Domain.Duenio;
+import Sist_Vtv.Domain.Vehiculo;
 import Sist_Vtv.Servicio.DuenioService;
+import Sist_Vtv.Servicio.VehiculoService;
 import Sist_Vtv.dao.TipoDuenioDao;
 import lombok.extern.slf4j.Slf4j;
 
@@ -33,7 +35,8 @@ public class ControladorDuenio {
 	private DuenioService duenioSimp;
 	@Autowired
 	private TipoDuenioDao tipoDuenioSimp;
-	
+	@Autowired
+	private VehiculoService vehiculoSimp;
 	
 	@GetMapping("/")
 	public String inicioDuenio(Model model) {
@@ -46,18 +49,32 @@ public class ControladorDuenio {
         return "modificarDuenio";
     }
 	 @PostMapping("/guardar")
-    public String guardar(@Valid Duenio duenioForm, Errors error, Model model){
+    public String guardar(@Valid Duenio duenioForm, Errors error, Model model, Vehiculo vehiculo){
 		 model.addAttribute("tipoDuenios", tipoDuenioSimp.findAll());
 		 if(error.hasErrors()) {
 			 return "modificarDuenio";
 		 }
+		 
 		 if (duenioSimp.encontrarDuenio(duenioForm)== null) {
 			 duenioSimp.guardar(duenioForm);
+			 return "redirect:/duenio/";
 		 }else {
 			 return "redirect:/duenio/";
 		 }
-        return "redirect:/duenio/";
     }
+	 
+	 @PostMapping("/vehiculo")
+	 public String altaVehiculo(@Valid Vehiculo vehiculoForm,Errors error, Duenio duenioForm) {
+		 System.out.println(duenioForm);
+		 if(error.hasErrors()) {
+			 return "altaVehiculo";
+		 }
+		 
+		 if(vehiculoSimp.encontrarVehiculo(vehiculoForm)== null) {
+	
+		 }
+		 return "redirect:/duenio/";
+	 }
 	 @GetMapping("/info/{dniDuenio}")
 		public String duenioInfo(Model model, Duenio duenio) {
 		 duenio= duenioSimp.encontrarDuenio(duenio);
@@ -66,7 +83,7 @@ public class ControladorDuenio {
 		}
 	@GetMapping("/buscar")
 		public String duenioParticular(Model model, Duenio duenio) {
-		model.addAttribute("duenio", duenioSimp.encontrarDuenio(duenio.nombre));
+		model.addAttribute("duenio", duenioSimp.encontrarDuenio(duenio));
 		return "duenioParticular";
 		}
 }

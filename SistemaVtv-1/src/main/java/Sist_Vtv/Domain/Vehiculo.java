@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 
 import lombok.Data;
 
@@ -22,6 +23,7 @@ import lombok.Data;
 public class Vehiculo implements Serializable{
 	private static final long serialVersionUID=1L;
 	@Id
+	@Pattern(regexp = "[A-Z]{3}+[0-9]{3}+[A-Z]{3} || [A-Z]{3}+[0-9]{3} ", message = "la patente no tiene el formato valido")
 	private String Dominio;
 	@NotEmpty
 	private String Marca;

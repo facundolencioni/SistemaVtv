@@ -17,5 +17,5 @@ public interface DuenioService {
     public void guardar(Duenio duenio);
     public void eliminar(Duenio duenio);
     public Duenio encontrarDuenio(Duenio duenio);
-    public Duenio encontrarDuenio(String name);
+   
 }
