@@ -39,7 +39,7 @@ public class DuenioServiceImp implements DuenioService{
     @Override
     @Transactional(readOnly = true)
     public Duenio encontrarDuenio(Duenio duenio) {
-    return duenioDao.findById(duenio.getIdDuenio()).orElse(null);
+    return duenioDao.findById(duenio.getDniDuenio()).orElse(null);
     }
 
 	@Override

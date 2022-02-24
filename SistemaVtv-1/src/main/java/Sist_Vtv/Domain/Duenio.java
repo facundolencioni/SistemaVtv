@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 import lombok.Data;
 
 @Entity
@@ -13,10 +16,12 @@ public class Duenio implements Serializable {
 	private static final long serialVersionUID=1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idDuenio;
-  
+	private Long dniDuenio;
+	@NotEmpty
 	public String nombre;
+	@NotEmpty
 	private String direccion;
+	@NotNull
 	private int telefono;
 	
     @ManyToOne
@@ -25,12 +30,12 @@ public class Duenio implements Serializable {
     @OneToMany(mappedBy = "duenio", cascade = CascadeType.ALL)
 	private List<Vehiculo> vehiculos;
 
-	public Long getIdDuenio() {
-		return idDuenio;
+	public Long getDniDuenio() {
+		return dniDuenio;
 	}
 
-	public void setIdDuenio(Long idDuenio) {
-		this.idDuenio = idDuenio;
+	public void setDniDuenio(Long idDuenio) {
+		this.dniDuenio = idDuenio;
 	}
 
 	public String getNombre() {
@@ -73,10 +78,10 @@ public class Duenio implements Serializable {
 		this.vehiculos = vehiculos;
 	}
 
-	public Duenio(Long idDuenio, String nombreDuenio, String direccion, int telefono, TipoDuenio tipoDuenio,
+	public Duenio(Long DniDuenio, String nombreDuenio, String direccion, int telefono, TipoDuenio tipoDuenio,
 			List<Vehiculo> vehiculos) {
 		super();
-		this.idDuenio = idDuenio;
+		this.dniDuenio = DniDuenio;
 		this.nombre = nombreDuenio;
 		this.direccion = direccion;
 		this.telefono = telefono;

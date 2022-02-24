@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 import lombok.Data;
 
@@ -25,9 +26,11 @@ public class Vehiculo implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idVehiculo;
-	
+	@NotEmpty
 	private String Dominio;
+	@NotEmpty
 	private String Marca;
+	@NotEmpty
 	private String Modelo;
 	
     @ManyToOne(cascade = CascadeType.ALL)

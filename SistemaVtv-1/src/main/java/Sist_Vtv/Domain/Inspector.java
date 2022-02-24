@@ -4,7 +4,9 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.*;
-
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import lombok.Data;
 
@@ -19,9 +21,11 @@ public class Inspector implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idInspector;
-    
+	@NotEmpty
 	private String nombreInspector;
+	@NotNull
 	private int telefono;
+	@Email
 	private String email;  
         @OneToMany(mappedBy = "inspector", cascade = CascadeType.ALL)
         private List<Vtv> vtvs;

@@ -40,7 +40,10 @@
         	<h1 class="display-1">Titular</h1>
             <form th:action="@{/duenio/mostrar}"  method="post" th:object="${duenio}">
                 <div>
-                    <input type="hidden" name="idDuenio" th:field="*{idDuenio}">
+                <label for="dniDuenio" class="col-sm-2 col-form-label">Dni Dueño</label>
+                  <div class="col-sm-10">
+                    <input type="hidden" name="dniDuenio" th:field="*{dniDuenio}">
+                  </div>
                 </div>
             <div class="row">
                 <label for="nombre" class="col-sm-2 col-form-label">Nombre y Apellido</label>
@@ -61,7 +64,7 @@
                 </div>
             </div>
             <div class="row">
-                <label for="nombre" class="col-sm-2 col-form-label">Tipo de Dueñio</label>
+                <label for="nombre" class="col-sm-2 col-form-label">Tipo de Dueño</label>
                 <div class="col-sm-10">
                     <input type="text"  name="tipoDuenio"  th:field="*{tipoDuenio.nombreTipoDuenio}"class="form-control form-control-lg" placeholder="nombre apellido">
                 </div>

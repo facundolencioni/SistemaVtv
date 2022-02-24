@@ -43,6 +43,7 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
+                        <th scope="col">Dni Titular</th>
                         <th scope="col">Nombre Titular</th>
                         <th scope="col">Direccion</th>
                         <th scope="col">Telefono</th>
@@ -53,6 +54,7 @@
                 <tbody>
                     <tr th:each="duenio , contador : ${duenio}">
                         <td>[[${contador.count}]]</td>
+                        <td>[[${duenio.dniDuenio}]]</td>
                         <td>[[${duenio.nombre}]]</td>
                         <td>[[${duenio.direccion}]]</td>
                         <td>[[${duenio.telefono}]]</td>
