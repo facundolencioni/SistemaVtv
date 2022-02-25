@@ -6,10 +6,13 @@
 package Sist_Vtv.Controladores;
 
 import Sist_Vtv.Domain.Duenio;
+import Sist_Vtv.Domain.Vtv;
 import Sist_Vtv.Servicio.DuenioService;
 import Sist_Vtv.Servicio.VtvService;
 import Sist_Vtv.dao.EstadosVtvDao;
 import lombok.extern.slf4j.Slf4j;
+
+import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -45,14 +48,24 @@ public class ControladorInicio {
     }
     @GetMapping("/aptas")
     public String aptas(Model model) {
+    	LocalDate a= LocalDate.now();
+    	a.minusMonths(3);
     	var estadoVtv= estadoSimp.findById((long) 1).orElse(null);
-    	model.addAttribute("vtv", vtvSimp.VtvEstados(estadoVtv));
+    	for (Vtv vtv : vtvSimp.VtvEstados(estadoVtv)) {
+    		if(vtv.getFechaIni().isAfter(a)) {
+    		model.addAttribute("vtv", vtv);}
+		}
     return "muestraVtv";
     }
     @GetMapping("/noAptas")
     public String noAptas(Model model) {
+    	LocalDate a= LocalDate.now();
+    	a.minusMonths(3);
     	var estadoVtv= estadoSimp.findById((long) 2).orElse(null);
-    	model.addAttribute("vtv", vtvSimp.VtvEstados(estadoVtv));
+    	for (Vtv vtv : vtvSimp.VtvEstados(estadoVtv)) {
+    		if(vtv.getFechaIni().isAfter(a)) {
+    		model.addAttribute("vtv", vtv);}
+		}
     	
     return "muestraVtv";
     }
@@ -60,7 +73,12 @@ public class ControladorInicio {
     @GetMapping("/condicionales")
     public String condicional(Model model) {
     	var estadoVtv= estadoSimp.findById((long) 3).orElse(null);
-    	model.addAttribute("vtv", vtvSimp.VtvEstados(estadoVtv));
+    	LocalDate a= LocalDate.now();
+    	a.minusMonths(3);
+    	for (Vtv vtv : vtvSimp.VtvEstados(estadoVtv)) {
+    		if(vtv.getFechaIni().isAfter(a)) {
+    		model.addAttribute("vtv", vtv);}
+		}
     return "muestraVtv";
     }
 

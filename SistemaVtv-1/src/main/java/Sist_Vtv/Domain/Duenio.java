@@ -20,7 +20,6 @@ public class Duenio implements Serializable {
 	@Pattern(regexp = "[0-9]+", message = "el dni solo puede contener numeros")
 	private String dniDuenio;
 	@NotEmpty
-	@Pattern(regexp = "[a-zA-Z]+", message = "el nombre solo puede contener letras")
 	public String nombre;
 	@NotEmpty
 	private String direccion;
