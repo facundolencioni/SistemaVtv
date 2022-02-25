@@ -14,7 +14,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name= "inspector")
-public class Inspector implements Serializable{
+public class Inspector extends Persona implements Serializable{
 
     
 	private static final long serialVersionUID=1L;

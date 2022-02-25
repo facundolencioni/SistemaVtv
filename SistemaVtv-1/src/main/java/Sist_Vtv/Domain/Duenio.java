@@ -13,7 +13,7 @@ import lombok.Data;
 @Entity
 @Data
 @Table(name= "duenio")
-public class Duenio implements Serializable {
+public class Duenio extends Persona implements Serializable {
 	private static final long serialVersionUID=1L;
 	@Id
 	@Size(min = 7, max = 8,message = "el dni no tiene la cantidad de caracteres adecuada")
@@ -32,7 +32,8 @@ public class Duenio implements Serializable {
         
     @OneToMany(mappedBy = "duenio", cascade = CascadeType.ALL)
 	private List<Vehiculo> vehiculos;
-
+    
+    
 	public String getDniDuenio() {
 		return dniDuenio;
 	}
@@ -81,17 +82,18 @@ public class Duenio implements Serializable {
 		this.vehiculos.add(vehiculo);
 	}
 
-	public Duenio(String DniDuenio, String nombreDuenio, String direccion, @NotEmpty String telefono, TipoDuenio tipoDuenio,
-			List<Vehiculo> vehiculos) {
+	public Duenio(String DniDuenio, String nombreDuenio, String direccion,String telefono, TipoDuenio tipoDuenio) {
 		super();
 		this.dniDuenio = DniDuenio;
 		this.nombre = nombreDuenio;
 		this.direccion = direccion;
 		this.telefono = telefono;
 		this.tipoDuenio = tipoDuenio;
-		this.vehiculos = vehiculos;
 	}
-
+	public Duenio(String nombre) {
+		this.nombre= nombre;
+	}
+	
 	public Duenio() {
 		super();
 	}

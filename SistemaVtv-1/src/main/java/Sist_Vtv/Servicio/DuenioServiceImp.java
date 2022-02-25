@@ -20,7 +20,11 @@ import org.springframework.transaction.annotation.Transactional;
 public class DuenioServiceImp implements DuenioService{
     @Autowired
     private DuenioDao duenioDao;
-    @Override
+    public DuenioServiceImp(DuenioDao dueniDao1) {
+	 this.duenioDao=dueniDao1;
+	}
+
+	@Override
     @Transactional(readOnly = true)
     public List<Duenio> listarDuenio() {
     return duenioDao.findAll();
@@ -41,5 +45,11 @@ public class DuenioServiceImp implements DuenioService{
     public Duenio encontrarDuenio(Duenio duenio) {
     return duenioDao.findById(duenio.getDniDuenio()).orElse(null);
     }
+
+	@Override
+	public Duenio encontrarPorNombre(String nombre) {
+		
+		return duenioDao.findByNombre(nombre);
+	}
  
 }
