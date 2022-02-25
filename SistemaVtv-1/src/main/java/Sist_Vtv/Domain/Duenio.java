@@ -20,10 +20,12 @@ public class Duenio implements Serializable {
 	@Pattern(regexp = "[0-9]+", message = "el dni solo puede contener numeros")
 	private String dniDuenio;
 	@NotEmpty
+	@Pattern(regexp = "[a-zA-Z]+", message = "el nombre solo puede contener letras")
 	public String nombre;
 	@NotEmpty
 	private String direccion;
 	@NotEmpty
+	@Pattern(regexp = "[0-9]+", message = "el telefono solo puede contener numeros")
 	private String telefono;
 	
     @ManyToOne
@@ -76,8 +78,8 @@ public class Duenio implements Serializable {
 		return vehiculos;
 	}
 
-	public void setVehiculos(List<Vehiculo> vehiculos) {
-		this.vehiculos = vehiculos;
+	public void setVehiculos(Vehiculo vehiculo) {
+		this.vehiculos.add(vehiculo);
 	}
 
 	public Duenio(String DniDuenio, String nombreDuenio, String direccion, @NotEmpty String telefono, TipoDuenio tipoDuenio,

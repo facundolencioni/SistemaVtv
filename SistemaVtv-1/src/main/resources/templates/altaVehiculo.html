@@ -35,7 +35,7 @@
 
         </div>
        <div>
-       		<form th:action="@{/duenio/vehiculo/alta}"  method="post" th:object="${vehiculo}">
+       		<form th:action="@{/duenio/vehiculo/alta/} + ${duenio.dniDuenio}"  method="post" th:object="${vehiculo}">
                 <div>
                 	<label for="Dominio" class="col-sm-2 col-form-label">Dominio</label>
                     <input type="text" name="Dominio" th:field="*{Dominio}" class="form-control form-control-lg">
@@ -58,6 +58,7 @@
                		 <span class="form-text text-danger" th:if="${#fields.hasErrors('Modelo')}" th:errors="*{Modelo}">Error Modelo</span>
                
             </div>
+            	
                 <br/>
                
                 <button type="submit" name="Guardar" value="Guardar" class="btn btn-primary">Guardar</button>
